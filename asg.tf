@@ -15,6 +15,7 @@ resource "aws_autoscaling_group" "asg" {
     id      = aws_launch_template.launch-template.id
     version = "$Latest"
   }
+}
 #
 #  tag = {
 #    key                 = "Name"
