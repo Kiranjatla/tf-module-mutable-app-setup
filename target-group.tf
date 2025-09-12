@@ -28,7 +28,6 @@ resource "aws_lb_listener_rule" "rule" {
       values = ["${var.name}-${var.env}.roboshop.internal"]
     }
   }
-
 }
 
 #resource "aws_lb_listener" "public-https" {
