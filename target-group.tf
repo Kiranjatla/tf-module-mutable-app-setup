@@ -13,23 +13,23 @@ resource "aws_lb_target_group" "main" {
   }
 }
 
-#resource "aws_lb_listener_rule" "rule" {
-#  count        = var.type == "backend" ? 1 : 0
-#  listener_arn = var.alb["private"].lb_listener_arn
-#  priority     = var.lb_listener_priority
-#
-#  action {
-#    type             = "forward"
-#    target_group_arn = aws_lb_target_group.main.arn
-#  }
-#
-#  condition {
-#    host_header {
-#      values = ["${var.name}-${var.env}.roboshop.internal"]
-#    }
-#  }
-#
-#}
+resource "aws_lb_listener_rule" "rule" {
+  count        = var.type == "backend" ? 1 : 0
+  listener_arn = var.alb["private"].lb_listener_arn
+  priority     = var.lb_listener_priority
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.main.arn
+  }
+
+  condition {
+    host_header {
+      values = ["${var.name}-${var.env}.roboshop.internal"]
+    }
+  }
+
+}
 
 #resource "aws_lb_listener" "public-https" {
 #  count             = var.type == "frontend" ? 1 : 0
