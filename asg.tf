@@ -38,6 +38,12 @@ resource "aws_autoscaling_group" "asg" {
     value               = "${var.env}-${var.name}"
     propagate_at_launch = true
   }
+
+  tag {
+    key                 = "Monitor"
+    value               = "yes"
+    propagate_at_launch = true
+  }
 }
 
 resource "aws_autoscaling_policy" "cpu-tracking-policy" {
