@@ -50,6 +50,7 @@ resource "aws_iam_role_policy_attachment" "policy-to-role-attach" {
   policy_arn = aws_iam_policy.policy.arn
 }
 
+#when dealing with programming only you need to add this instance profile manually you will not see this arn profile
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "${var.env}-${var.name}-role"
   role = aws_iam_role.role.name
